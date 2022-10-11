@@ -1,0 +1,1 @@
+<a href="<?php echo route('admin.edit'); ?>">Liên kết ngay</a>
