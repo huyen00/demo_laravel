@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
 
     public function __construct(){
-        echo 'Khơi động';
+        // echo 'Khơi động';
         // return 'Khởi động Dashboard';
     }
     public function index(){

@@ -53,6 +53,10 @@ use App\Http\Controllers\Admin\DashboardController;
 //     });
 // });
 
+Route::get('/',function(){
+    return '<h1>Trang chủ Unicode</h1>';
+})->name('home');
+
 // client routes
 Route::prefix('categories')->group(function(){
 
@@ -82,7 +86,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('products', ProductsController::class);
 });
 
-Route::prefix('admin')->group(function(){
+Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index']);
-    Route::resource('pro', UserController::class);
+   Route::resource('products', ProductsController::class)->middleware('auth.admin.products');
 });

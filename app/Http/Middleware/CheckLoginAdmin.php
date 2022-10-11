@@ -16,7 +16,13 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        echo 'Middleware request';
+        if(!$this->isLogin()){
+            return redirect(route('home'));
+        }
+        // echo 'Middleware request';
         return $next($request);
+    }
+    public function isLogin(){
+        return false;
     }
 }
