@@ -53,6 +53,10 @@ Route::get('/as',[HomeController1::class, 'index']);
 //     });
 // });
 
+Route::get('/',function(){
+    return '<h1>Trang chủ Unicode</h1>';
+})->name('home');
+
 // client routes
 Route::prefix('categories')->group(function(){
 
