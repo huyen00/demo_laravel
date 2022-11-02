@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\HomeController1;
+use App\Http\Controllers\HomeController1;
 use App\Http\Controllers\CatagoriesController;
 use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SinhvienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,9 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name('home');
+
+Route::get('/as',[HomeController1::class, 'index']);
+
 
 // // chuyển hướng bằng controller
 // Route::get('/',[HomeController1::class, 'index']);
@@ -80,9 +80,14 @@ Route::prefix('categories')->group(function(){
 // admin route
 Route::prefix('admin')->group(function(){
     Route::resource('products', ProductsController::class);
+    // products- index 
 });
 
-Route::prefix('admin')->group(function(){
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::resource('pro', UserController::class);
+Route::prefix('admin')->name('users_sv.')->group(function(){
+    Route::get('/', [SinhvienController::class, 'index'])->name('list');
+    Route::get('add', [SinhvienController::class, 'add'])->name('add');
+    Route::post('add',[SinhvienController::class,'postAdd']);
+    Route::get('/edit/{id}',[SinhvienController::class,'getEdit'])->name('editsv');
+    Route::post('/edit/{id}',[SinhvienController::class,'postEdit'])->name('post-edit');
+   
 });
